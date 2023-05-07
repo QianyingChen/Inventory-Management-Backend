@@ -3,6 +3,7 @@ package com.skillstorm.inventoryManagement.dtos;
 import java.util.Objects;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 public class WarehouseDto {
 	private Long id;
@@ -17,7 +18,7 @@ public class WarehouseDto {
     private String contactPerson;
 	
 	@NotBlank
-//	@Pattern(regexp="^\\+(?:[0-9] ?){6,14}[0-9]$")
+//	@Pattern(regexp="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$")
     private String phoneNumber;
 
 	public WarehouseDto() {

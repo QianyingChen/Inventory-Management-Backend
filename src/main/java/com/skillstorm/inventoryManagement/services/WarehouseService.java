@@ -16,12 +16,19 @@ public class WarehouseService {
 	private WarehouseRepository warehouseRepository; 
 	
 	public List<WarehouseDto> findAllWarehouse(String name){
-		
-		return warehouseRepository.findAll()
+		if (name == null) {
+			return warehouseRepository.findAll()
+					.stream()
+					.map(s -> s.toDto()) // Perform some action that mutates each item in a list, use map
+					.toList(); // Condense into a list
+		}
+		// SELECT * FROM STORES WHERE name = ?;
+		return warehouseRepository.findByName(name)
 				.stream()
-				.map(w -> w.toDto())
+				.map(s -> s.toDto())
 				.toList();
 	}
+
 	
 	public WarehouseDto findWarehouseById(long id) {
 		return warehouseRepository.findById(id)
@@ -32,6 +39,16 @@ public class WarehouseService {
 	public WarehouseDto createWarehouse(WarehouseDto warehouseData) {
 		Warehouse warehouse = new Warehouse(warehouseData.getId(), warehouseData.getName(), warehouseData.getAddress(),warehouseData.getContactPerson(), warehouseData.getPhoneNumber());
 		return warehouseRepository.save(warehouse).toDto();
+	}
+
+	public WarehouseDto updateWarehouse(WarehouseDto warehouseData) {
+		Warehouse warehouse = new Warehouse(warehouseData.getId(), warehouseData.getName(), warehouseData.getAddress(),warehouseData.getContactPerson(), warehouseData.getPhoneNumber());
+		return warehouseRepository.save(warehouse).toDto();
+	}
+
+	public void deleteWarehouse(long id) {
+		warehouseRepository.deleteById(id);
+		
 	}
 	
 }
