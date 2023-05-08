@@ -2,6 +2,8 @@ package com.skillstorm.inventoryManagement.dtos;
 
 import java.util.Objects;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
@@ -19,17 +21,23 @@ public class ItemDto {
     private Integer quantity;
     
     @NotNull
+    @Min(value = 1, message = "Max capacity must be at least 1")
+    @Max(value = 100, message = "Max capacity cannot exceed 100")
+    private int maxCapacity;
+    
+    @NotNull
     private Long warehouseId;
     
     public ItemDto() {
 		
 	}
 
-	public ItemDto(Long id, String name, Integer quantity, Long warehouseId) {
+	public ItemDto(Long id, String name, Integer quantity, int maxCapacity, Long warehouseId) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.quantity = quantity;
+		this.maxCapacity = maxCapacity;
 		this.warehouseId = warehouseId;
 	}
 
@@ -57,6 +65,14 @@ public class ItemDto {
 		this.quantity = quantity;
 	}
 
+	public int getMaxCapacity() {
+		return maxCapacity;
+	}
+
+	public void setMaxCapacity(int maxCapacity) {
+		this.maxCapacity = maxCapacity;
+	}
+
 	public Long getWarehouseId() {
 		return warehouseId;
 	}
@@ -67,7 +83,7 @@ public class ItemDto {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, quantity, warehouseId);
+		return Objects.hash(id, maxCapacity, name, quantity, warehouseId);
 	}
 
 	@Override
@@ -79,15 +95,17 @@ public class ItemDto {
 		if (getClass() != obj.getClass())
 			return false;
 		ItemDto other = (ItemDto) obj;
-		return Objects.equals(id, other.id) && Objects.equals(name, other.name)
+		return Objects.equals(id, other.id) && maxCapacity == other.maxCapacity && Objects.equals(name, other.name)
 				&& Objects.equals(quantity, other.quantity) && Objects.equals(warehouseId, other.warehouseId);
 	}
 
 	@Override
 	public String toString() {
-		return "ItemDto [id=" + id + ", name=" + name + ", quantity=" + quantity + ", warehouseId=" + warehouseId + "]";
+		return "ItemDto [id=" + id + ", name=" + name + ", quantity=" + quantity + ", maxCapacity=" + maxCapacity
+				+ ", warehouseId=" + warehouseId + "]";
 	}
 
+	
 	
     
 }

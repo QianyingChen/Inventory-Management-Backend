@@ -87,7 +87,7 @@ public class Item {
 	}
 	
 	public ItemDto toDto() {
-		return new ItemDto (id, name, quantity, warehouse.getId());
+		return new ItemDto (id, name, quantity, maxCapacity, warehouse.getId());
 	}
 
 	@Override
