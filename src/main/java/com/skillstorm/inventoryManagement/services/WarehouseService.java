@@ -37,12 +37,12 @@ public class WarehouseService {
 	}
 	
 	public WarehouseDto createWarehouse(WarehouseDto warehouseData) {
-		Warehouse warehouse = new Warehouse(warehouseData.getId(), warehouseData.getName(), warehouseData.getAddress(),warehouseData.getContactPerson(), warehouseData.getPhoneNumber());
+		Warehouse warehouse = new Warehouse(warehouseData.getId(), warehouseData.getName(), warehouseData.getAddress(),warehouseData.getContactPerson(), warehouseData.getPhoneNumber(), warehouseData.getMaxCapacity());
 		return warehouseRepository.save(warehouse).toDto();
 	}
 
 	public WarehouseDto updateWarehouse(WarehouseDto warehouseData) {
-		Warehouse warehouse = new Warehouse(warehouseData.getId(), warehouseData.getName(), warehouseData.getAddress(),warehouseData.getContactPerson(), warehouseData.getPhoneNumber());
+		Warehouse warehouse = new Warehouse(warehouseData.getId(), warehouseData.getName(), warehouseData.getAddress(),warehouseData.getContactPerson(), warehouseData.getPhoneNumber(), warehouseData.getMaxCapacity());
 		return warehouseRepository.save(warehouse).toDto();
 	}
 

@@ -21,8 +21,8 @@ public class ItemDto {
     private Integer quantity;
     
     @NotNull
-    @Min(value = 1, message = "Max capacity must be at least 1")
-    @Max(value = 100, message = "Max capacity cannot exceed 100")
+//    @Min(value = 1, message = "Item Max capacity must be at least 1")
+    @Max(value = 100, message = "Item Max capacity cannot exceed 100")
     private int maxCapacity;
     
     @NotNull

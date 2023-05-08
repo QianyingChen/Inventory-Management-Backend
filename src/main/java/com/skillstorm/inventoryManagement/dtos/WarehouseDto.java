@@ -2,7 +2,10 @@ package com.skillstorm.inventoryManagement.dtos;
 
 import java.util.Objects;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 public class WarehouseDto {
@@ -20,19 +23,24 @@ public class WarehouseDto {
 	@NotBlank
 //	@Pattern(regexp="^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$")
     private String phoneNumber;
+	
+	@NotNull
+    @Min(value = 1, message = "Warehouse Max capacity must be at least 1")
+    @Max(value = 100, message = "Warehouse Max capacity cannot exceed 100")
+    private int maxCapacity;
 
 	public WarehouseDto() {
 		super();
 	}
 
-	public WarehouseDto(Long id, String name, String address, String contactPerson,
-			String phoneNumber) {
+	public WarehouseDto(Long id, String name, String address, String contactPerson, String phoneNumber, int maxCapacity) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
 		this.contactPerson = contactPerson;
 		this.phoneNumber = phoneNumber;
+		this.maxCapacity = maxCapacity;
 	}
 
 	public Long getId() {
@@ -75,9 +83,17 @@ public class WarehouseDto {
 		this.phoneNumber = phoneNumber;
 	}
 
+	public int getMaxCapacity() {
+		return maxCapacity;
+	}
+
+	public void setMaxCapacity(int maxCapacity) {
+		this.maxCapacity = maxCapacity;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(address, contactPerson, id, name, phoneNumber);
+		return Objects.hash(address, contactPerson, id, maxCapacity, name, phoneNumber);
 	}
 
 	@Override
@@ -90,15 +106,16 @@ public class WarehouseDto {
 			return false;
 		WarehouseDto other = (WarehouseDto) obj;
 		return Objects.equals(address, other.address) && Objects.equals(contactPerson, other.contactPerson)
-				&& Objects.equals(id, other.id) && Objects.equals(name, other.name)
+				&& Objects.equals(id, other.id) && maxCapacity == other.maxCapacity && Objects.equals(name, other.name)
 				&& Objects.equals(phoneNumber, other.phoneNumber);
 	}
 
 	@Override
 	public String toString() {
 		return "WarehouseDto [id=" + id + ", name=" + name + ", address=" + address + ", contactPerson=" + contactPerson
-				+ ", phoneNumber=" + phoneNumber + "]";
+				+ ", phoneNumber=" + phoneNumber + ", maxCapacity=" + maxCapacity + "]";
 	}
+
 	
 	
 	
