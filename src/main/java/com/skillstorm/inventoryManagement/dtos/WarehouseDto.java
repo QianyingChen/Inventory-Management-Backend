@@ -7,6 +7,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Positive;
 
 public class WarehouseDto {
 	private Long id;
@@ -26,7 +27,8 @@ public class WarehouseDto {
 	
 	@NotNull
     @Min(value = 1, message = "Warehouse Max capacity must be at least 1")
-    @Max(value = 100, message = "Warehouse Max capacity cannot exceed 100")
+    @Max(value = 5000, message = "Warehouse Max capacity cannot exceed 100")
+//	@Positive(message = "Capacity must be a positive number")
     private int maxCapacity;
 
 	public WarehouseDto() {

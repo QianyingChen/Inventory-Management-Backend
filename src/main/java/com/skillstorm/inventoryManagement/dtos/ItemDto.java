@@ -13,7 +13,6 @@ public class ItemDto {
     private Long id;
 
     @NotBlank(message = "Name is required")
-//    @Size(max = 255, message = "Name must be less than or equal to 255 characters")
     private String name;
 
     @NotNull(message = "Quantity is required")
@@ -21,7 +20,6 @@ public class ItemDto {
     private Integer quantity;
     
     @NotNull
-//    @Min(value = 1, message = "Item Max capacity must be at least 1")
     @Max(value = 100, message = "Item Max capacity cannot exceed 100")
     private int maxCapacity;
     

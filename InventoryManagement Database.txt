@@ -1,4 +1,4 @@
-CREATE TABLE warehouse (
+CREATE TABLE warehouses (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   address VARCHAR(255) NOT NULL,
@@ -6,7 +6,7 @@ CREATE TABLE warehouse (
   phone_number VARCHAR(20) NOT NULL
 );
 
-CREATE TABLE item (
+CREATE TABLE items (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   quantity INT NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE item (
   FOREIGN KEY (warehouse_id) REFERENCES warehouse(id)
 );
 
-CREATE TABLE transaction (
+CREATE TABLE transactions (
   id SERIAL PRIMARY KEY,
   transaction_date TIMESTAMP NOT NULL,
   transaction_type VARCHAR(255) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE transaction (
   FOREIGN KEY (item_id) REFERENCES item(id)
 );
 
-CREATE TABLE user (
+CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(255) NOT NULL,
   password VARCHAR(255) NOT NULL,

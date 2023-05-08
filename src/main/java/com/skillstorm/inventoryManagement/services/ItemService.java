@@ -37,15 +37,7 @@ public class ItemService {
 		
 	}
 	
-//	public ItemDto findItemByIdAndWarehouseId(long warehouseId, long itemId, ItemDto itemData) {
-//        Item item = itemRepository.findByIdAndWarehouseId(itemId, warehouseId)
-//                .orElseThrow();
-//        item.setName(itemData.getName());
-//        item.setQuantity(itemData.getQuantity());
-//        item.setMaxCapacity(itemData.getMaxCapacity());
-//        return itemRepository.save(item).toDto();
-//    }
-//	
+
 	public ItemDto findItemByIdAndWarehouseId(long itemId, long warehouseId, ItemDto itemData) {
 		Warehouse warehouse = warehouseRepository.findById(warehouseId)
     		.orElseThrow(() -> new IllegalArgumentException("Warehouse with id " + warehouseId + " not found"));
