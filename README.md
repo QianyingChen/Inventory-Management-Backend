@@ -2,7 +2,7 @@
 
 ## Database Tables
 ### warehouses
-| Name | Type   |  Description Description |  
+| Name | Type   |  Description  |  
 |------|--------|-------------- |  
 | id   | SERIAL    |Unique identifier for the warehouse
 | name | VARCHAR |Name of the warehouse
@@ -12,7 +12,7 @@
 | max_capacity   | INT    |Max Capacity  of the warehouse
 
 ### items
-| Name | Type   |  Description Description |  
+| Name | Type   |  Description  |  
 |------|--------|-------------- |  
 | id   | SERIAL    | Unique identifier for the item
 | name | VARCHAR |Name of the item
@@ -21,7 +21,7 @@
 | warehouse_id   | INT    |Foreign key referencing the warehouse table
 
 ### warehouses
-| Name | Type   | Description Description |  
+| Name | Type   | Description  |  
 |------|--------|-------------- |  
 | id   | SERIAL    |Unique identifier for the transaction
 | transaction_date | TIMESTAMP |Date and time the transaction occurred
@@ -30,7 +30,7 @@
 | item_id   | INT |Foreign key referencing the item table
 
 ### users
-| Name | Type   | Description Description |  
+| Name | Type   | Description  |  
 |------|--------|-------------- |  
 | id   | SERIAL    |Unique identifier for the user
 | username | VARCHAR |Username for logging in
